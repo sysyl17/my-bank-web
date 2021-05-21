@@ -18,7 +18,7 @@ export class UserService {
         this.user = undefined;
         this.$http.post('/api/user/logout', undefined, {credentials: 'include'})
             .then(() => {
-                document.location.href = "/login";
+                document.location.href = "/index";
             })
     }
 

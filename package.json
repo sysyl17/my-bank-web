@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "parcel build --public-url / -d target/classes/public ./src/main/resources/public/login.html src/main/resources/public/espacePerso.html",
-    "start-dev": "parcel --public-url / -d target/classes/public ./src/main/resources/public/login.html src/main/resources/public/espacePerso.html"
+    "build": "parcel build --public-url / -d target/classes/public ./src/main/resources/public/login.html src/main/resources/public/espacePerso.html src/main/resources/public/index.html",
+    "start-dev": "parcel --public-url / -d target/classes/public ./src/main/resources/public/login.html src/main/resources/public/espacePerso.html src/main/resources/public/index.html"
   },
   "repository": {
     "type": "git",

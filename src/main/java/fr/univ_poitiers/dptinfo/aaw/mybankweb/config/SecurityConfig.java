@@ -78,7 +78,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter implements WebM
 
         http
                 .authorizeRequests()
-                .antMatchers("/api/user/login", "/", "/login", "/espacePerso", "/error", "/css/*").permitAll()
+                .antMatchers("/api/user/login", "/","/index", "/login", "/espacePerso", "/error", "/css/*").permitAll()
                 //.antMatchers(HttpMethod.DELETE, "/api/comments").hasAuthority("ROLE_ADMIN")
                 .anyRequest().authenticated();
 
@@ -89,7 +89,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter implements WebM
                 .logout()
                 .logoutUrl("/api/user/logout")
                 .logoutSuccessHandler(getLogoutSuccessHandler())
-                .logoutSuccessUrl("/login")
+                .logoutSuccessUrl("/index")
                 .invalidateHttpSession(true)
                 .deleteCookies(authToken, csrfCookieTokenName);
 
@@ -162,7 +162,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter implements WebM
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/").setViewName("forward:login.html");
+        registry.addViewController("/").setViewName("forward:index.html");
+        registry.addViewController("/index").setViewName("forward:index.html");
         registry.addViewController("/login").setViewName("forward:login.html");
         registry.addViewController("/espacePerso").setViewName("forward:espacePerso.html");
     }
