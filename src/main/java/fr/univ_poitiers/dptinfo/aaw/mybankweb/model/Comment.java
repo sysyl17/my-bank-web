@@ -1,10 +1,14 @@
 package fr.univ_poitiers.dptinfo.aaw.mybankweb.model;
 
-
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class Comment {
     @Id
@@ -16,38 +20,4 @@ public class Comment {
 
     @OneToOne
     private User user;
-
-    public Comment(Long id, String text, User user) {
-        this.id = id;
-        this.text = text;
-        this.user = user;
-    }
-
-    public Comment() {
-
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getText() {
-        return text;
-    }
-
-    public void setText(String text) {
-        this.text = text;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
 }

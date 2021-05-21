@@ -1,6 +1,7 @@
 package fr.univ_poitiers.dptinfo.aaw.mybankweb.config;
 
 
+
 import fr.univ_poitiers.dptinfo.aaw.mybankweb.model.AuthToken;
 import fr.univ_poitiers.dptinfo.aaw.mybankweb.model.AuthTokenRepository;
 import fr.univ_poitiers.dptinfo.aaw.mybankweb.model.User;
@@ -10,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
+import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.web.filter.OncePerRequestFilter;
 import org.springframework.web.util.WebUtils;
 
@@ -19,6 +21,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.Optional;
 

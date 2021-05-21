@@ -18,13 +18,10 @@ import java.util.Collection;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
+@Entity(name="UserMember")
 public class User implements UserDetails {
 
-
-
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
     private String email;
