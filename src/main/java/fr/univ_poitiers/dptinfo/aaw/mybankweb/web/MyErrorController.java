@@ -24,7 +24,7 @@ public class MyErrorController implements ErrorController {
             if (statusCode == HttpStatus.FORBIDDEN.value() || statusCode == HttpStatus.UNAUTHORIZED.value()) {
                 return "login";
             } else if (statusCode == HttpStatus.CONFLICT.value()) {
-                return "livredor";
+                return "espacePerso";
             }
         }
         return "error";

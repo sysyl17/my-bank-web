@@ -78,8 +78,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter implements WebM
 
         http
                 .authorizeRequests()
-                .antMatchers("/api/user/login", "/", "/login", "/livredor", "/error", "/css/*").permitAll()
-                .antMatchers(HttpMethod.DELETE, "/api/comments").hasAuthority("ROLE_ADMIN")
+                .antMatchers("/api/user/login", "/", "/login", "/espacePerso", "/error", "/css/*").permitAll()
+                //.antMatchers(HttpMethod.DELETE, "/api/comments").hasAuthority("ROLE_ADMIN")
                 .anyRequest().authenticated();
 
         http
@@ -97,8 +97,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter implements WebM
                 .csrf()
                 .requireCsrfProtectionMatcher(request ->
                         ("/api/user/login".equals(request.getRequestURI())
-                                || ("/api/comments".equals(request.getRequestURI()) && HttpMethod.POST.matches(request.getMethod())
-                        ))
+                                /*|| ("/api/comments".equals(request.getRequestURI()) */&& HttpMethod.POST.matches(request.getMethod())
+                        )
                 )
                 .csrfTokenRepository(getCsrfTokenRepository())
         ;
@@ -164,7 +164,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter implements WebM
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/").setViewName("forward:login.html");
         registry.addViewController("/login").setViewName("forward:login.html");
-        registry.addViewController("/livredor").setViewName("forward:livredor.html");
+        registry.addViewController("/espacePerso").setViewName("forward:espacePerso.html");
     }
 
 }

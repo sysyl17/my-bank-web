@@ -1,5 +1,6 @@
 import './login.css';
 
+// @ts-ignore
 const template = require("./login.html");
 
 import controller from "./login.controller";

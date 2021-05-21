@@ -1,5 +1,6 @@
 import './user.css';
 
+// @ts-ignore
 const template = require("./user.html");
 
 import controller from "./user.controller";

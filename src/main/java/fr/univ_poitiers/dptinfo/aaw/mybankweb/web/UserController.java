@@ -84,7 +84,7 @@ class UserController {
             tokenCookie.setHttpOnly(true);
             tokenCookie.setMaxAge(expiredTime);
             response.addCookie(tokenCookie);
-            response.sendRedirect("/livredor");
+            response.sendRedirect("/espacePerso");
         } catch (Exception e) {
             response.sendError(HttpStatus.LOCKED.value());
         }
