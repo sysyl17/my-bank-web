@@ -38,10 +38,10 @@ class UserController {
     @Autowired
     private UserRepository userRepository;
 
-    @Value("${com.serli.auth.token}")
+    @Value("${fr.univ_poitiers.dptinfo.aaw.auth.token}")
     private String authToken;
 
-    @Value("${com.serli.auth.expired}")
+    @Value("${fr.univ_poitiers.dptinfo.aaw.auth.expired}")
     private int expiredTime;
 
 
@@ -86,7 +86,9 @@ class UserController {
             response.addCookie(tokenCookie);
             response.sendRedirect("/espacePerso");
         } catch (Exception e) {
+            log.info("Couple login/password incorrect");
             response.sendError(HttpStatus.LOCKED.value());
+
         }
 
     }
