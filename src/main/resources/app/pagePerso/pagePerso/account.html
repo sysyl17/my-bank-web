@@ -11,12 +11,19 @@
 </header>
 
 <main class="App-intro">
-    <div class="comments-container">
-
-      <div ng-repeat="account in ctrl.accounts track by $index" class="comment" >
-        <p>{{account.name}}</p>
-
-      </div>
+    <div >
+        <table class="responstable">
+            <tr>
+                <td>#</td>
+                <td>Nom</td>
+                <td>Solde(€)</td>
+            </tr>
+                <tr ng-repeat="account in ctrl.accounts track by $index">
+                    <td>{{$index}}</td>
+                    <td>{{account.name}}</td>
+                    <td>{{account.balance}}</td>
+                </tr>
+        </table>
     </div>
     <div ui-view="user">
 
