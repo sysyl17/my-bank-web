@@ -16,8 +16,8 @@ public class Account {
     @Id
     private Integer id;
     private Integer userId;
-    private String nom;
-    private double solde;
+    private String name;
+    private double balance;
 
 
 }

@@ -1,44 +1,44 @@
 // @ts-ignore
 import angular from 'angular';
-import User from "./user/user";
-import pagePerso from "./pagePerso/pagePerso";
+import pagePerso from "./pagePerso/account";
 import "../style/app.css";
 import "jquery";
 
 
-import UserComponent from './user/user';
-import PagePersoComponent from './pagePerso/pagePerso'
+
+import AccountComponent from './pagePerso/account'
 import uirouter from '@uirouter/angularjs';
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
 import {default as userServiceName, UserService} from "../service/UserService";
+import {default as accountServiceName, AccountService} from "../service/AccountService";
 
 
 angular.module('app', [uirouter])
     .component(pagePerso.name, pagePerso.component)
-    .component(User.name, User.component)
     .service(userServiceName, UserService)
+    .service(accountServiceName, AccountService)
     .config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
 
 
-        const espacePerso = {
-            name: "espacePerso",
+        const accounts = {
+            name: "accounts",
             state: {
-                url: "/espacePerso",
+                url: "/accounts",
                 views: {
                     'main@': {
-                        component: PagePersoComponent.name
+                        component: AccountComponent.name
                     }
                 }
             }
         };
 
 
-        $urlRouterProvider.otherwise("/espacePerso");
+        $urlRouterProvider.otherwise("/accounts");
 
         $stateProvider
-            .state(espacePerso.name, espacePerso.state);
+            .state(accounts.name, accounts.state);
     }])
 
 
