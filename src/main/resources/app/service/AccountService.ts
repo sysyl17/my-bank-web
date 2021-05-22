@@ -6,7 +6,7 @@ export class AccountService {
     constructor(private $http) {
     }
 
-    getUserAccount(id){
+    getUserAccount(id) {
         return this.$http
             .get(`/api/accounts/${id}`, {
                 credentials: 'include',
@@ -19,20 +19,14 @@ export class AccountService {
             .catch((e) => {
             });
     }
-    loadAccount(id) {
+
+    loadUserAccounts(id) {
 
         return this.$http.get(`/api/accounts/${id}`, {
             credentials: 'include',
         });
     }
 
-    loadAccounts() {
-
-        return this.$http.get('/api/accounts', {
-            credentials: 'include',
-        });
-
-    }
 }
 
 export default "AccountService";
