@@ -11,19 +11,32 @@
 </header>
 
 <main class="App-intro">
-    <div >
+    <div>
         <table class="responstable">
             <tr>
                 <td>#</td>
                 <td>Nom</td>
                 <td>Solde(€)</td>
             </tr>
-                <tr ng-repeat="account in ctrl.accounts track by $index">
-                    <td>{{$index}}</td>
-                    <td>{{account.name}}</td>
-                    <td>{{account.balance}}</td>
-                </tr>
+            <tr ng-repeat="account in ctrl.accounts track by $index">
+                <td>{{$index+1}}</td>
+                <td>{{account.name}}</td>
+                <td>{{account.balance}}</td>
+            </tr>
         </table>
+    </div>
+    <div>
+        <label for="name">Nom du compte</label>
+        <input id="name" name="name" ng-model="ctrl.name" type="text"/>
+        <label for="balance">Solde(€)</label>
+        <input id="balance"
+               name="balance" type="number" min="0"
+               ng-model="ctrl.balance"/>
+
+        <div class="login-action-div">
+            <button ng-click="ctrl.creeCompte()"></button>
+        </div>
+
     </div>
     <div ui-view="user">
 

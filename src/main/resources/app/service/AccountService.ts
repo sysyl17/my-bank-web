@@ -1,4 +1,5 @@
 import * as angular from "angular";
+import account from "../pagePerso/pagePerso/account";
 
 export class AccountService {
 
@@ -26,6 +27,19 @@ export class AccountService {
             credentials: 'include',
         });
     }
+
+    addAccount(name,balance) {
+
+        return this.$http.post('/api/accounts', {name: name,balance:balance},
+            {
+                credentials: 'include',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                },
+            })
+    }
+
 
 }
 

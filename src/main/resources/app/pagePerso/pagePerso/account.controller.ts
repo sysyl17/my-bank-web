@@ -1,5 +1,6 @@
 import {UserService, default as userServiceName} from "../../service/UserService";
 import {AccountService, default as accountServiceName} from "../../service/AccountService";
+import account from "./account";
 
 export default class AccountCtrl {
 
@@ -10,26 +11,49 @@ export default class AccountCtrl {
         "$state"
     ]
     private accounts: Array<any>;
+    private name: string;
+    private balance: string;
+    private id: string;
 
-
-    constructor(private userService: UserService,private $sce, private accountServiceName: AccountService, private $state) {
+    constructor(private userService: UserService, private $sce, private accountServiceName: AccountService, private $state) {
     }
 
     $onInit() {
         this.userService.getCurrentUser()
             .then((response) => {
-                this.loadAccount(response.id);
+                this.id = response.id;
+                this.loadAccount();
             });
     }
 
-    loadAccount(id) {
-        return this.accountServiceName.loadUserAccounts(id)
+    loadAccount() {
+        return this.accountServiceName.loadUserAccounts(this.id)
             .then((response) => {
                 this.accounts = response.data;
+                console.log("response");
                 console.log(this.accounts);
                 return response;
             });
     }
+
+    async creeCompte() {
+        if (this.name && this.balance) {
+            await this.loadAccount();
+            let response = await this.accountServiceName.addAccount(this.name, this.balance);
+            if (response.status === 200) {
+                this.closeNewAccount();
+            }
+        }else{
+            alert("Erreur de saisie.")
+        }
+    }
+
+    closeNewAccount() {
+        this.name = undefined;
+        this.balance = undefined;
+        this.loadAccount();
+    }
+
 
     showUser(user) {
         this.$state.go("user", {id: user.id})
