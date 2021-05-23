@@ -30,6 +30,7 @@ export default class AccountCtrl {
         return this.virementServiceName.loadVirementRecu(this.id)
             .then((response) => {
                 this.virementsRecu = response.data;
+                console.log(this.virementsRecu);
                 return response;
             });
 
