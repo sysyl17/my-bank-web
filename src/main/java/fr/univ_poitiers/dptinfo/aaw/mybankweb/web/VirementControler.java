@@ -41,6 +41,7 @@ public class VirementControler {
                 cpAccount.setId(virement.getId());
                 cpAccount.setMotif(virement.getMotif());
                 cpAccount.setMontant(virement.getMontant());
+
                 cpAccount.setNomCompteVers(accVers.getName());
                 cpAccount.setNameUserCompteVers(userRepository.findById(idUser).orElseThrow(IllegalArgumentException::new).getName());
 
@@ -71,7 +72,6 @@ public class VirementControler {
                 Account accVers = accountRepository.findById(virement.getIdCompteVers()).orElseThrow(IllegalArgumentException::new);
                 cpAccount.setNomCompteVers(accVers.getName());
                 cpAccount.setNameUserCompteVers(userRepository.findById(accVers.getUserId()).orElseThrow(IllegalArgumentException::new).getName());
-
 
                 all.add(cpAccount);
             }
