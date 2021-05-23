@@ -61,6 +61,13 @@ class UserController {
         return ResponseEntity.ok().body(user);
     }
 
+    @GetMapping("/virement")
+    ResponseEntity<User> getVirement() {
+        User principal = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        return ResponseEntity.ok().body(principal);
+    }
+
 
     @PostMapping("/login")
     public void login(@RequestParam String username, @RequestParam String password, HttpServletResponse response) throws IOException {

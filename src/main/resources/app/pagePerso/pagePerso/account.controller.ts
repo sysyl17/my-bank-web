@@ -30,8 +30,6 @@ export default class AccountCtrl {
         return this.accountServiceName.loadUserAccounts(this.id)
             .then((response) => {
                 this.accounts = response.data;
-                console.log("response");
-                console.log(this.accounts);
                 return response;
             });
     }
@@ -46,6 +44,12 @@ export default class AccountCtrl {
         }else{
             alert("Erreur de saisie.")
         }
+    }
+
+    async virement() {
+
+        document.location.href = "/virement";
+
     }
 
     closeNewAccount() {

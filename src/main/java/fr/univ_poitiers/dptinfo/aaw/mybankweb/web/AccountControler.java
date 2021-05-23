@@ -25,6 +25,13 @@ public class AccountControler {
         return all;
     }
 
+
+    @GetMapping("/{id}")
+    Collection<Account> getUserAccounts(@PathVariable("id") Integer id) {
+        List<Account> all = accountRepository.findByUserId(id);
+        return all;
+    }
+
     @PostMapping
     void save(@RequestBody Account account) {
         User principal = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -33,13 +40,5 @@ public class AccountControler {
         System.out.println(account);
         accountRepository.save(account);
     }
-
-    @GetMapping("/{id}")
-    Collection<Account> getUserAccounts(@PathVariable("id") Integer id) {
-        List<Account> all = accountRepository.findByUserId(id);
-        return all;
-    }
-
-
 
 }

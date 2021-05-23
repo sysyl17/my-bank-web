@@ -78,7 +78,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter implements WebM
 
         http
                 .authorizeRequests()
-                .antMatchers("/api/user/login", "/","/index", "/login", "/espacePerso", "/error", "/css/*").permitAll()
+                .antMatchers("/api/user/login", "/","/index", "/login", "/espacePerso","/virement", "/error", "/css/*").permitAll()
                 .antMatchers(HttpMethod.DELETE, "/api/accounts").hasAuthority("ROLE_ADMIN")
                 .anyRequest().authenticated();
 
@@ -166,6 +166,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter implements WebM
         registry.addViewController("/index").setViewName("forward:index.html");
         registry.addViewController("/login").setViewName("forward:login.html");
         registry.addViewController("/espacePerso").setViewName("forward:espacePerso.html");
+        registry.addViewController("/virement").setViewName("forward:virement.html");
     }
 
 }

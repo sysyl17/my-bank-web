@@ -1,46 +1,47 @@
 // @ts-ignore
 import angular from 'angular';
-import pagePerso from "./pagePerso/account";
-
+import virement from "./virement/virement";
 import "../style/app.css";
 import "jquery";
 
 
-import AccountComponent from './pagePerso/account'
+
+import VirementComponent from './virement/virement'
 import uirouter from '@uirouter/angularjs';
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
 import {default as userServiceName, UserService} from "../service/UserService";
 import {default as accountServiceName, AccountService} from "../service/AccountService";
+import {default as virementServiceName, VirementService} from "../service/VirementService";
 
 
-angular.module('app', [uirouter])
-    .component(pagePerso.name, pagePerso.component)
+angular.module('virement', [uirouter])
+    .component(virement.name, virement.component)
     .service(userServiceName, UserService)
     .service(accountServiceName, AccountService)
+    .service(virementServiceName, VirementService)
     .config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
 
 
-        const accounts = {
-            name: "accounts",
+        const virement = {
+            name: "virement",
             state: {
-                url: "/accounts",
+                url: "/virement",
                 views: {
                     'main@': {
-                        component: AccountComponent.name
+                        component: VirementComponent.name
                     }
                 }
             }
         };
 
 
-        $urlRouterProvider.otherwise("/accounts");
+        $urlRouterProvider.otherwise("/virement");
 
         $stateProvider
-            .state(accounts.name, accounts.state);
-
+            .state(virement.name, virement.state);
     }])
 
 
-angular.bootstrap(document.body, ['app']);
+angular.bootstrap(document.body, ['virement']);
