@@ -11,38 +11,43 @@
 </header>
 
 <main class="App-intro">
-    <div>
-        <h2>Vos comptes bancaires</h2>
-        <h3 ng-If="ctrl.accounts.length==0">Vous n'avez aucun compte bancaire</h3>
-        <table ng-If="ctrl.accounts.length>0" class="responstable">
-            <tr>
-                <td>#</td>
-                <td>Nom</td>
-                <td>Solde(€)</td>
-            </tr>
-            <tr ng-repeat="account in ctrl.accounts track by $index">
-                <td>{{$index + 1}}</td>
-                <td>{{account.name}}</td>
-                <td>{{account.balance}}</td>
-            </tr>
-        </table>
+    <div class="topnav">
+        <a class="activeIndex" href="/">Accueil</a>
+        <a href="" class="activeCourant">Gestion des comptes</a>
+        <a href="" ng-click="ctrl.virement()">Mes opérations</a>
     </div>
-    <div>
-        <label for="name">Nom du compte</label>
-        <input id="name" name="name" ng-model="ctrl.name" type="text"/>
-        <label for="balance">Solde(€)</label>
-        <input id="balance"
-               name="balance" type="number" min="0"
-               ng-model="ctrl.balance"/>
+    <div class="accounts">
+        <div>
+            <h2>Créez un compte bancaire</h2>
+            <label for="name">Nom du compte</label>
+            <input id="name" name="name" ng-model="ctrl.name" type="text"/>
+            <br>
+            <label for="balance">Solde(€)</label>
+            <input id="balance"
+                   name="balance" type="number" min="0"
+                   ng-model="ctrl.balance"/>
 
-        <div class="login-action-div">
-            <button ng-click="ctrl.creeCompte()">Créer compte</button>
+            <div class="login-action-div">
+                <button ng-click="ctrl.creeCompte()">Créer compte</button>
+            </div>
         </div>
-    </div>
-    <div>
 
-        <button ng-click="ctrl.virement()">Afficher les virements</button>
-
+        <div>
+            <h2>Vos comptes bancaires</h2>
+            <h3 ng-If="ctrl.accounts.length==0">Vous n'avez aucun compte bancaire</h3>
+            <table ng-If="ctrl.accounts.length>0" class="responstable">
+                <tr>
+                    <td>#</td>
+                    <td>Nom</td>
+                    <td>Solde(€)</td>
+                </tr>
+                <tr ng-repeat="account in ctrl.accounts track by $index">
+                    <td>{{$index + 1}}</td>
+                    <td>{{account.name}}</td>
+                    <td>{{account.balance}}</td>
+                </tr>
+            </table>
+        </div>
     </div>
     <div ui-view="user">
 

@@ -44,5 +44,8 @@ export default class AccountCtrl {
             });
     }
 
+    async accounts() {
+        document.location.href = "/espacePerso";
+    }
 
 }

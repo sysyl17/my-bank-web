@@ -11,7 +11,12 @@
 </header>
 
 <main class="App-intro">
-    <div>
+    <div class="topnav">
+        <a class="activeIndex" href="/">Accueil</a>
+        <a href="" ng-click="ctrl.accounts()">Gestion des comptes</a>
+        <a href="" class="activeCourant">Mes opérations</a>
+    </div>
+    <div class="virements">
         <div>
             <h2>Virement Recu</h2>
             <h3 ng-If="ctrl.virementsRecu.length==0">Aucun Virement Recu</h3>

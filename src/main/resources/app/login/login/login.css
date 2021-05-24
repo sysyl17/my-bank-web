@@ -28,8 +28,8 @@ header > span.title {
 /* styles in src/style directory are applied to the whole page */
 
 main {
-    padding: 1em;
-    font-family: Arial, Helvetica, sans-serif;
+   /* padding: 1em;
+    font-family: Arial, Helvetica, sans-serif;*/
     text-align: center;
     margin-top: 50px;
     display: block;

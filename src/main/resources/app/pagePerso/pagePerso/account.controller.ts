@@ -47,9 +47,7 @@ export default class AccountCtrl {
     }
 
     async virement() {
-
         document.location.href = "/virement";
-
     }
 
     closeNewAccount() {
