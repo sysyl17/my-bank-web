@@ -15,14 +15,18 @@ export default class AccountCtrl {
     private balance: string;
     private id: string;
 
-    constructor(private userService: UserService, private $sce, private accountServiceName: AccountService, private $state) {
+    constructor(private userServiceName: UserService, private $sce, private accountServiceName: AccountService, private $state) {
     }
 
     $onInit() {
-        this.userService.getCurrentUser()
+        this.userServiceName.getCurrentUser()
             .then((response) => {
                 this.id = response.id;
                 this.loadAccount();
+            })
+            .catch((e) => {
+                document.location.href = "/login";
+                alert("Session invalide, expulsé pour inactivité");
             });
     }
 
@@ -35,13 +39,20 @@ export default class AccountCtrl {
     }
 
     async creeCompte() {
+       console.log("appel");
+
         if (this.name && this.balance) {
-            await this.loadAccount();
+            let tokenExp= await this.userServiceName.getCurrentUser();
+            if (!tokenExp) {
+                document.location.href = "/login";
+                alert("Session invalide, expulsé pour inactivité");
+            }
+
             let response = await this.accountServiceName.addAccount(this.name, this.balance);
             if (response.status === 200) {
                 this.closeNewAccount();
             }
-        }else{
+        } else {
             alert("Erreur de saisie.")
         }
     }

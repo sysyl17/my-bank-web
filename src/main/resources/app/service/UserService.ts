@@ -45,7 +45,7 @@ export class UserService {
             });
     }
 
-    getUser(id){
+    getUser(id) {
         return this.$http
             .get(`/api/user/${id}`, {
                 credentials: 'include',
