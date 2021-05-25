@@ -18,13 +18,13 @@
     </div>
     <div class="virements">
         <div>
-            <h2>Virement Recu</h2>
+            <h2>Virement reçu</h2>
             <h3 ng-If="ctrl.virementsRecu.length==0">Aucun Virement Recu</h3>
             <table ng-If="ctrl.virementsRecu.length>0" class="responstable">
                 <tr>
                     <td>#</td>
-                    <td>Compte vers</td>
-                    <td>Compte depuis</td>
+                    <td>Compte bénéficiaire</td>
+                    <td>Compte déficitaire</td>
                     <td>Montant(€)</td>
                     <td>Motif</td>
 
@@ -44,8 +44,8 @@
             <table ng-If="ctrl.virementsEffectue.length>0" class="responstable">
                 <tr>
                     <td>#</td>
-                    <td>Compte depuis</td>
-                    <td>Compte vers</td>
+                    <td>Compte déficitaire</td>
+                    <td>Compte bénéficiaire</td>
                     <td>Montant(€)</td>
                     <td>Motif</td>
 

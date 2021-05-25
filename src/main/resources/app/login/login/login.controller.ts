@@ -7,7 +7,7 @@ export default class LoginCtrl {
 
     private static readonly $inject = ["$state", userServiceName];
 
-    constructor(private $state, private userService:UserService) {
+    constructor(private $state, private userService: UserService) {
     }
 
     $onInit() {
@@ -31,7 +31,7 @@ export default class LoginCtrl {
             .then((user) => {
                 if (user) {
                     this.logged = user;
-                    document.location.href="/espacePerso";
+                    document.location.href = "/espacePerso";
                 }
 
             })

@@ -23,6 +23,10 @@ export default class AccountCtrl {
                 this.id = response.id;
                 this.loadVirementRecu();
                 this.loadVirementEffectue();
+            })
+            .catch((e) => {
+                document.location.href = "/login";
+                alert("Session invalide, expulsé pour inactivité");
             });
     }
 

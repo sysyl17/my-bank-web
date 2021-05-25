@@ -1,6 +1,7 @@
 package fr.univ_poitiers.dptinfo.aaw.mybankweb.web;
 
 import fr.univ_poitiers.dptinfo.aaw.mybankweb.model.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,8 +15,12 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/virement")
 public class VirementControler {
+
+    @Autowired
     private VirementRepository virementRepository;
+    @Autowired
     private AccountRepository accountRepository;
+    @Autowired
     private UserRepository userRepository;
 
     public VirementControler(VirementRepository virementRepository, AccountRepository accountRepository, UserRepository userRepository) {
