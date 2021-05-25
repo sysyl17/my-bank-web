@@ -38,13 +38,44 @@ main {
     padding: 1em;
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
-    margin-top: 50px;
+    margin-top: 100px;
     display: block;
+}
+
+body {
+    background-image : url(https://wallpapercave.com/wp/wp2661490.jpg);
+    background-size: 100% auto;
 }
 
 footer {
     text-align: center;
     font-size: 0.8em;
+}
+
+img {
+    max-width: 95%;
+    height: auto;
+}
+
+.index-info {
+    display: flex;
+}
+
+.index-info div{
+    width: 30%;
+    margin-left : 1%;
+    margin-right : 1%;
+    background-color : rgba(255,222,173,0.8);
+
+    border-radius: 10px;
+}
+
+.index-info div p{
+    background-color : goldenrod;
+    margin-left : 1%;
+    margin-right : 1%;
+    border-radius: 10px;
+    text-align: justify;
 }
 
 .login-container {

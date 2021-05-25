@@ -3,7 +3,7 @@ header {
     top: 0;
     left: 0;
     right: 0;
-    height: 80px;
+    height: 100px;
     background-color: white;
     color: #333;
     display: flex;
@@ -14,22 +14,29 @@ header {
     box-shadow: -2px 2px 10px 0px #333;
 }
 
-header > span {
+header > div {
     flex: 1;
-    display: flex;
+    display: grid;
     justify-content: center;
 }
 
-header > span.title {
+header > div span.title {
+    text-align: center;
     font-size: 3em;
     color: goldenrod;
+}
+
+header > div p {
+    text-align: center;
+    font-size: 1em;
+    color: sandybrown;
 }
 
 /* styles in src/style directory are applied to the whole page */
 
 main {
-   /* padding: 1em;
-    font-family: Arial, Helvetica, sans-serif;*/
+    /* padding: 1em;
+     font-family: Arial, Helvetica, sans-serif;*/
     text-align: center;
     margin-top: 50px;
     display: block;
@@ -38,6 +45,11 @@ main {
 footer {
     text-align: center;
     font-size: 0.8em;
+}
+
+body {
+    background-image : url(https://ak.picdn.net/shutterstock/videos/1010264129/thumb/11.jpg);
+    background-size: 100% auto;
 }
 
 .login-container {
@@ -53,7 +65,10 @@ footer {
 }
 
 .login-container .login-input-div {
+    background-color : goldenrod;
     margin-top: 50px;
+    margin-bottom : 10px;
+    border-radius: 20px;
     display: flex;
     align-items: baseline;
     flex-direction: column;
@@ -61,6 +76,9 @@ footer {
 
 .login-container .login-input-div > input {
     padding: 5px 10px;
+    width : 80%;
+    margin-left: 10px;
+    margin-right: 10px;
     height: 32px;
     border-radius: 2px;
     border: 1px solid #dedede;
@@ -68,11 +86,17 @@ footer {
     margin-bottom: 20px;
 }
 
-.login-action-div > button {
-    padding: 10px 20px;
+.login-container .login-input-div > label {
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+.login-action-div > input {
+    padding: 10px 10px;
     font-size: 1em;
-    color: white;
-    background-color: forestgreen;
+    color: black;
+    background-color: navajowhite;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
