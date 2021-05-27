@@ -28,8 +28,9 @@ header > div span.title {
 
 header > div p {
     text-align: center;
-    font-size: 1em;
+    font-size: 1.2em;
     color: sandybrown;
+    font-family: "Brush Script MT";
 }
 
 /* styles in src/style directory are applied to the whole page */
@@ -38,7 +39,7 @@ main {
     /* padding: 1em;
      font-family: Arial, Helvetica, sans-serif;*/
     text-align: center;
-    margin-top: 50px;
+    margin-top: 100px;
     display: block;
 }
 
@@ -92,7 +93,12 @@ body {
     margin-top: 10px;
 }
 
-.login-action-div > input {
+.label-page {
+    background-color : rgba(218,165,32,0.8);
+    border-radius: 10px;
+}
+
+input {
     padding: 10px 10px;
     font-size: 1em;
     color: black;
@@ -100,6 +106,21 @@ body {
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
+}
+
+.login-action-div > button {
+    padding: 10px 10px;
+    font-size: 1em;
+    color: black;
+    background-color: navajowhite;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.login-action-div > button a {
+    color: black;
+    text-decoration: none;
 }
 
 .error {

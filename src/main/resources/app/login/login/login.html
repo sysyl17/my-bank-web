@@ -9,7 +9,7 @@
 
   <div class="login-container">
     <div ui-view="error"></div>
-    <div>
+    <div class="label-page">
       <h2>Page de connexion</h2>
     </div>
     <form ng-submit="login.login()" >
@@ -24,10 +24,10 @@
                ng-model="login.password"/>
       </div>
       <div class="login-action-div">
-        <button type="submit">Se connecter</a>
-        </button>
+        <button type="submit">Se connecter</button>
       </div>
     </form>
+    <input class="retour-input" type="button"  onclick="window.location.href = '/index'" value="Retour"/>
 
 
   </div>
