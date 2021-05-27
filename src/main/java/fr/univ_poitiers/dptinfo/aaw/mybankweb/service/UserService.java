@@ -22,13 +22,11 @@ public class UserService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
         Objects.requireNonNull(username);
-        User user = userRepository.findByEmail(username)
+        return userRepository.findByEmail(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));
-
-        return user;
     }
 
-    public Optional<User> findById(Integer id){
+    public Optional<User> findById(Integer id) {
         return userRepository.findById(id);
     }
 

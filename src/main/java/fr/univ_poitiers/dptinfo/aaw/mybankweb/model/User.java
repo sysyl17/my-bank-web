@@ -9,8 +9,6 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.Arrays;
 import java.util.Collection;
@@ -18,7 +16,7 @@ import java.util.Collection;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity(name="UserMember")
+@Entity(name = "UserMember")
 public class User implements UserDetails {
 
     @Id
@@ -28,8 +26,8 @@ public class User implements UserDetails {
     private String password;
     private boolean admin;
 
-    public User(String name, String email, String password){
-        this.name=name;
+    public User(String name, String email, String password) {
+        this.name = name;
         this.email = email;
         this.password = password;
     }
@@ -37,7 +35,7 @@ public class User implements UserDetails {
     @Override
     @JsonIgnore
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        if(admin){
+        if (admin) {
             return Arrays.asList(new SimpleGrantedAuthority("ROLE_ADMIN"));
         }
         return null;

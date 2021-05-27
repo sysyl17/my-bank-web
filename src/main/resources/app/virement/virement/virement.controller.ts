@@ -48,7 +48,9 @@ export default class AccountCtrl {
             });
     }
 
+    //redirige vers la page espacePerso en faisant en rafraichissant la date d'expiration du token
     async accounts() {
+        this.userService.refreshTokenExpiration();
         document.location.href = "/espacePerso";
     }
 

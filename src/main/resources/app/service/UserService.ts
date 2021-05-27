@@ -59,6 +59,17 @@ export class UserService {
             });
     }
 
+    //permet de remettre 30 secondes à la date d'expiration du token
+    refreshTokenExpiration() {
+        this.$http.get("/api/user/tokenRefresh", {
+            credentials: 'include',
+        }).then()
+            .catch((e) => {
+                this.deconnecter();
+                alert("Session invalide, expulsé pour inactivité");
+            });
+    }
+
 }
 
 export default "UserService";

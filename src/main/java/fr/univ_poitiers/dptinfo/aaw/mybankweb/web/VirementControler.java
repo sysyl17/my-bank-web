@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/virement")
@@ -23,18 +22,18 @@ public class VirementControler {
     @Autowired
     private UserRepository userRepository;
 
-    public VirementControler(VirementRepository virementRepository, AccountRepository accountRepository, UserRepository userRepository) {
-        this.virementRepository = virementRepository;
-        this.accountRepository = accountRepository;
-        this.userRepository = userRepository;
-    }
 
     @GetMapping
     Collection<Virement> getVirements() {
-        List<Virement> all = virementRepository.findAll();
-        return all;
+        return virementRepository.findAll();
     }
 
+    /**
+     * Permet de d'obtenir via la BD la liste des virements recu.
+     * @param idUser Un identifiant d'utilisateur
+     * @return Une collection de CompleteAccount qui permet de décrire une ligne de virement pour faciliter l'affichage
+     * @see CompleteAccount
+     */
     @GetMapping("/recu/{id}")
     Collection<CompleteAccount> getVirementRecu(@PathVariable("id") Integer idUser) {
         List<CompleteAccount> all = new ArrayList<>();
@@ -59,6 +58,12 @@ public class VirementControler {
         return all;
     }
 
+    /**
+     * Permet de d'obtenir via la BD la liste des virements envoyé par le client.
+     * @param idUser Un identifiant d'utilisateur
+     * @return Une collection de CompleteAccount qui permet de décrire une ligne de virement pour faciliter l'affichage
+     * @see CompleteAccount
+     */
     @GetMapping("/effectue/{id}")
     Collection<CompleteAccount> getVirementEffectue(@PathVariable("id") Integer idUser) {
         List<CompleteAccount> all = new ArrayList<>();

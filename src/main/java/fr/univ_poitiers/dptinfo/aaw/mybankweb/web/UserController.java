@@ -5,7 +5,6 @@ import fr.univ_poitiers.dptinfo.aaw.mybankweb.model.AuthToken;
 import fr.univ_poitiers.dptinfo.aaw.mybankweb.model.AuthTokenRepository;
 import fr.univ_poitiers.dptinfo.aaw.mybankweb.model.User;
 import fr.univ_poitiers.dptinfo.aaw.mybankweb.model.UserRepository;
-import org.apache.coyote.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,19 +16,16 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.view.RedirectView;
+import org.springframework.web.util.WebUtils;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.security.Principal;
 import java.util.Date;
-import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
-import static fr.univ_poitiers.dptinfo.aaw.mybankweb.web.Utils.isTokenExpired;
 
 @RestController
 @RequestMapping("/api/user")
@@ -66,22 +62,26 @@ class UserController {
         return ResponseEntity.ok().body(user);
     }
 
-    @GetMapping("/virement")
-    ResponseEntity<User> getVirement() {
+    //permet de remettre 30 secondes à la date d'expiration du token
+    @GetMapping("/tokenRefresh")
+    ResponseEntity<User> refreshTokenExpiration(HttpServletRequest request) {
+
         User principal = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
-      /*  if(isTokenExpired(authTokenRepository,principal.getId())){
-            log.info("token expired, redirect to login");
-            System.out.println("token expired, redirect to login");
-            authTokenRepository.deleteByUserId(principal.getId());
-            new RedirectView("/");
+        Date expiredDate = new Date(System.currentTimeMillis() + expiredTime);
+
+        Cookie token = WebUtils.getCookie(request, authToken);
+        if (token != null) {
+            Optional<AuthToken> byUserId = authTokenRepository.findById(token.getValue());
+            byUserId.ifPresent((authToken) -> {
+                authToken.setExpiredDate(expiredDate);
+                authTokenRepository.save(authToken);
+                log.info("réinitialisation de la date d'expiration du token : {}", authToken.getExpiredDate());
+            });
         }
 
-        log.info("token not expired, redirect to virement");
-        System.out.println("token not expired, redirect to virement");*/
         return ResponseEntity.ok().body(principal);
     }
-
 
     @PostMapping("/login")
     public void login(@RequestParam String username, @RequestParam String password, HttpServletResponse response) throws IOException {
@@ -111,6 +111,5 @@ class UserController {
             response.sendError(HttpStatus.LOCKED.value());
 
         }
-
     }
 }

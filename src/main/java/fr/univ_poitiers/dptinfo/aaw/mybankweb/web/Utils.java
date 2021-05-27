@@ -9,6 +9,7 @@ import java.util.List;
 
 public class Utils {
 
+    //pas utilisé
     public static boolean isTokenExpired(AuthTokenRepository authTokenRepository, Integer userId) {
 
         List<AuthToken> tokens = authTokenRepository.findByUserId(userId);

@@ -41,12 +41,13 @@ export default class AccountCtrl {
     async creeCompte() {
 
         if (this.name && this.balance) {
-            let tokenExp= await this.userService.getCurrentUser();
+            let tokenExp = await this.userService.getCurrentUser();
             if (!tokenExp) {
                 this.userService.deconnecter();
                 alert("Session invalide, expulsé pour inactivité");
             }
 
+            this.userService.refreshTokenExpiration();
             let response = await this.accountServiceName.addAccount(this.name, this.balance);
             if (response.status === 200) {
                 this.closeNewAccount();
@@ -56,7 +57,9 @@ export default class AccountCtrl {
         }
     }
 
+    //redirige vers la page virement en faisant en rafraichissant la date d'expiration du token
     async virement() {
+        this.userService.refreshTokenExpiration();
         document.location.href = "/virement";
     }
 
@@ -66,9 +69,5 @@ export default class AccountCtrl {
         this.loadAccount();
     }
 
-
-    showUser(user) {
-        this.$state.go("user", {id: user.id})
-    }
 
 }

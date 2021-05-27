@@ -28,10 +28,9 @@ export class AccountService {
         });
     }
 
-    addAccount(name,balance) {
-
-
-        return this.$http.post('/api/accounts', {name: name,balance:balance},
+    //Ajout d'un compte bancaire à la BD
+    addAccount(name, balance) {
+        return this.$http.post('/api/accounts', {name: name, balance: balance},
             {
                 credentials: 'include',
                 headers: {
@@ -40,7 +39,6 @@ export class AccountService {
                 },
             })
     }
-
 
 }
 
