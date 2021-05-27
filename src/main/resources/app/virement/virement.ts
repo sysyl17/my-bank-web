@@ -4,8 +4,6 @@ import virement from "./virement/virement";
 import "../style/app.css";
 import "jquery";
 
-
-
 import VirementComponent from './virement/virement'
 import uirouter from '@uirouter/angularjs';
 

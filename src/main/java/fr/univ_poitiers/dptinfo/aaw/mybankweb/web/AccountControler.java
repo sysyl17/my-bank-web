@@ -52,8 +52,8 @@ public class AccountControler {
     void save(@RequestBody Account account) {
         User principal = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
-        Date expiredDate = new Date(System.currentTimeMillis() + expiredTime);
-        authTokenRepository.findByUserId(principal.getId());
+        /*Date expiredDate = new Date(System.currentTimeMillis() + expiredTime);
+        authTokenRepository.findByUserId(principal.getId());*/
 
         account.setUserId(principal.getId());
         System.out.println(account);
