@@ -9,4 +9,5 @@ public interface AuthTokenRepository extends JpaRepository<AuthToken, String> {
 
     List<AuthToken> findByUserId(Integer user);
     void deleteByUserId(Integer userId);
+
 }

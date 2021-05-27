@@ -1,6 +1,6 @@
 import {UserService, default as userServiceName} from "../../service/UserService";
 import {AccountService, default as accountServiceName} from "../../service/AccountService";
-import account from "./account";
+
 
 export default class AccountCtrl {
 
@@ -15,17 +15,17 @@ export default class AccountCtrl {
     private balance: string;
     private id: string;
 
-    constructor(private userServiceName: UserService, private $sce, private accountServiceName: AccountService, private $state) {
+    constructor(private userService: UserService, private $sce, private accountServiceName: AccountService, private $state) {
     }
 
     $onInit() {
-        this.userServiceName.getCurrentUser()
+        this.userService.getCurrentUser()
             .then((response) => {
                 this.id = response.id;
                 this.loadAccount();
             })
             .catch((e) => {
-                document.location.href = "/login";
+                this.userService.deconnecter();
                 alert("Session invalide, expulsé pour inactivité");
             });
     }
@@ -39,12 +39,11 @@ export default class AccountCtrl {
     }
 
     async creeCompte() {
-       console.log("appel");
 
         if (this.name && this.balance) {
-            let tokenExp= await this.userServiceName.getCurrentUser();
+            let tokenExp= await this.userService.getCurrentUser();
             if (!tokenExp) {
-                document.location.href = "/login";
+                this.userService.deconnecter();
                 alert("Session invalide, expulsé pour inactivité");
             }
 

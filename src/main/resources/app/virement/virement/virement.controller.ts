@@ -25,7 +25,7 @@ export default class AccountCtrl {
                 this.loadVirementEffectue();
             })
             .catch((e) => {
-                document.location.href = "/login";
+                this.userService.deconnecter();
                 alert("Session invalide, expulsé pour inactivité");
             });
     }

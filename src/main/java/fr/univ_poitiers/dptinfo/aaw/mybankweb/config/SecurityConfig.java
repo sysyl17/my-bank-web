@@ -79,7 +79,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter implements WebM
         http
                 .authorizeRequests()
                 .antMatchers("/api/user/login", "/","/index", "/login", "/espacePerso","/virement", "/error", "/css/*").permitAll()
-                .antMatchers(HttpMethod.DELETE, "/api/accounts").hasAuthority("ROLE_ADMIN")
+                //.antMatchers(HttpMethod.DELETE, "/api/accounts").hasAuthority("ROLE_ADMIN")
                 .anyRequest().authenticated();
 
         http
@@ -96,10 +96,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter implements WebM
         http
                 .csrf()
                 .requireCsrfProtectionMatcher(request ->
-                       /* ("/api/user/login".equals(request.getRequestURI())
-                                || */("/api/accounts".equals(request.getRequestURI())
+                        ("/api/user/login".equals(request.getRequestURI())
+                                || ("/api/accounts".equals(request.getRequestURI())
                                 || ("/api/virement".equals(request.getRequestURI()) && HttpMethod.POST.matches(request.getMethod())
-                        ))//)
+                        )))
                 )
                 .csrfTokenRepository(getCsrfTokenRepository())
         ;

@@ -24,6 +24,10 @@ export default class LoginCtrl {
                 if (response.status === 200)
                     document.location.href = "/espacePerso";
             })
+            .catch((e) => {
+                document.location.href = "/login";
+                alert("Couple login/password incorrect");
+            });
     }
 
     logged() {
