@@ -60,6 +60,7 @@ img {
 
 .index-info {
     display: flex;
+    margin-left: 4%;
 }
 
 .index-info div{
@@ -78,6 +79,17 @@ img {
     border-radius: 10px;
     text-align: justify;
     padding : 10px;
+}
+
+.scam{
+    display: flow-root;
+
+    width: 30%;
+    background-color : rgba(255,222,173,0.8);
+    margin-bottom: 20px;
+    border-radius: 10px;
+    margin-inline: auto;
+
 }
 
 .login-container {
