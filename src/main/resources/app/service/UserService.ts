@@ -14,7 +14,9 @@ export class UserService {
         return this._user;
     }
 
-    deconnecter() {
+
+    //deconnecte un utilisateur
+    logout() {
         this.user = undefined;
         this.$http.post('/api/user/logout', undefined, {credentials: 'include'})
             .then(() => {
@@ -65,7 +67,7 @@ export class UserService {
             credentials: 'include',
         }).then()
             .catch((e) => {
-                this.deconnecter();
+                this.logout();
                 alert("Session invalide, expulsé pour inactivité");
             });
     }

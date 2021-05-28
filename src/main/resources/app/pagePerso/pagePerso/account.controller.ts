@@ -25,7 +25,7 @@ export default class AccountCtrl {
                 this.loadAccount();
             })
             .catch((e) => {
-                this.userService.deconnecter();
+                this.userService.logout();
                 alert("Session invalide, expulsé pour inactivité");
             });
     }
@@ -43,7 +43,7 @@ export default class AccountCtrl {
         if (this.name && this.balance) {
             let tokenExp = await this.userService.getCurrentUser();
             if (!tokenExp) {
-                this.userService.deconnecter();
+                this.userService.logout();
                 alert("Session invalide, expulsé pour inactivité");
             }
 

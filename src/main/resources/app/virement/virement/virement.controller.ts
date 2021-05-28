@@ -25,21 +25,22 @@ export default class AccountCtrl {
                 this.loadVirementEffectue();
             })
             .catch((e) => {
-                this.userService.deconnecter();
+                this.userService.logout();
                 alert("Session invalide, expulsé pour inactivité");
             });
     }
 
+    //obtention des virements recu selon un id d'utilisateur
     loadVirementRecu() {
         return this.virementServiceName.loadVirementRecu(this.id)
             .then((response) => {
                 this.virementsRecu = response.data;
-                console.log(this.virementsRecu);
                 return response;
             });
 
     }
 
+    //obtention des virements effectué selon un id d'utilisateur
     loadVirementEffectue() {
         return this.virementServiceName.loadVirementEffectue(this.id)
             .then((response) => {

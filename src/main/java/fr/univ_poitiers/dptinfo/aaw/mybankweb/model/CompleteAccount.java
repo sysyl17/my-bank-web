@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
+
 /**
  * Classe utilistaire qui décrire une ligne de virement afin que l'affichage soit plus facile
  */
@@ -18,6 +20,7 @@ public class CompleteAccount {
     private String nameUserCompteVers;
     private double montant;
     private String motif;
+    //private Date date;
 
 
 }

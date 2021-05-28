@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.util.Date;
 
 @Data
 @NoArgsConstructor
@@ -22,5 +23,6 @@ public class Virement {
     private Integer idCompteVers;
     private double montant;
     private String motif;
+    //private Date date;
 
 }

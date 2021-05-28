@@ -14,6 +14,7 @@ export default class LoginCtrl {
         this.logged();
     }
 
+    //connect un utilisateur
     async login() {
         let data = new FormData();
         data.append("username", this.id);

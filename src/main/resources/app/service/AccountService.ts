@@ -21,6 +21,7 @@ export class AccountService {
             });
     }
 
+    //retourne tous les comptes bancaire d'un utilisateur
     loadUserAccounts(id) {
 
         return this.$http.get(`/api/accounts/${id}`, {
