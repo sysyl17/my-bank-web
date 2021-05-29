@@ -13,12 +13,17 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 
 import {default as userServiceName, UserService} from "../service/UserService";
 import {default as accountServiceName, AccountService} from "../service/AccountService";
+import {csrfInterceptor} from "../service/Interceptor";
 
 
 angular.module('app', [uirouter])
     .component(pagePerso.name, pagePerso.component)
     .service(userServiceName, UserService)
     .service(accountServiceName, AccountService)
+    .factory('authInterceptor', csrfInterceptor)
+    .config(['$httpProvider', ($httpProvider) => {
+        $httpProvider.interceptors.push('authInterceptor');
+    }])
     .config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
 
 

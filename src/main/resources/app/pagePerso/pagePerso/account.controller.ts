@@ -15,8 +15,9 @@ export default class AccountCtrl {
     private balance: string;
     private id: string;
 
-    constructor(private userService: UserService, private $sce, private accountServiceName: AccountService, private $state) {
+    constructor(private userService: UserService, private $sce, private accountService: AccountService, private $state) {
     }
+
 
     $onInit() {
         this.userService.getCurrentUser()
@@ -31,7 +32,7 @@ export default class AccountCtrl {
     }
 
     loadAccount() {
-        return this.accountServiceName.loadUserAccounts(this.id)
+        return this.accountService.loadUserAccounts(this.id)
             .then((response) => {
                 this.accounts = response.data;
                 return response;
@@ -48,7 +49,7 @@ export default class AccountCtrl {
             }
 
             this.userService.refreshTokenExpiration();
-            let response = await this.accountServiceName.addAccount(this.name, this.balance);
+            let response = await this.accountService.addAccount(this.name, this.balance);
             if (response.status === 200) {
                 this.closeNewAccount();
             }

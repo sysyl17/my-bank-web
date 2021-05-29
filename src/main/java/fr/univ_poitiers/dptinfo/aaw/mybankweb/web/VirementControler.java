@@ -7,8 +7,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -45,6 +47,7 @@ public class VirementControler {
                 cpAccount.setId(virement.getId());
                 cpAccount.setMotif(virement.getMotif());
                 cpAccount.setMontant(virement.getMontant());
+                cpAccount.setDate(formatDate(virement.getDate()));
 
                 cpAccount.setNomCompteVers(accVers.getName());
                 cpAccount.setNameUserCompteVers(userRepository.findById(idUser).orElseThrow(IllegalArgumentException::new).getName());
@@ -75,6 +78,7 @@ public class VirementControler {
                 cpAccount.setId(virement.getId());
                 cpAccount.setMotif(virement.getMotif());
                 cpAccount.setMontant(virement.getMontant());
+                cpAccount.setDate(formatDate(virement.getDate()));
 
                 cpAccount.setNomCompteDepuis(accDepuis.getName());
                 cpAccount.setNameUserCompteDepuis(userRepository.findById(accDepuis.getUserId()).orElseThrow(IllegalArgumentException::new).getName());
@@ -87,6 +91,14 @@ public class VirementControler {
             }
         }
         return all;
+    }
+
+    public String formatDate(Date date){
+        DateFormat shortDateFormat = DateFormat.getDateTimeInstance(
+                DateFormat.SHORT,
+                DateFormat.SHORT);
+
+        return shortDateFormat.format(date);
     }
 
 }

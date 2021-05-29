@@ -23,6 +23,6 @@ public class Virement {
     private Integer idCompteVers;
     private double montant;
     private String motif;
-    //private Date date;
+    private Date date;
 
 }

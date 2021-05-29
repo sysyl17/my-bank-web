@@ -14,7 +14,7 @@ export default class AccountCtrl {
     private virementsEffectue: Array<any>;
     private id: string;
 
-    constructor(private userService: UserService, private $sce, private virementServiceName: VirementService, private $state) {
+    constructor(private userService: UserService, private $sce, private virementService: VirementService, private $state) {
     }
 
     $onInit() {
@@ -32,7 +32,7 @@ export default class AccountCtrl {
 
     //obtention des virements recu selon un id d'utilisateur
     loadVirementRecu() {
-        return this.virementServiceName.loadVirementRecu(this.id)
+        return this.virementService.loadVirementRecu(this.id)
             .then((response) => {
                 this.virementsRecu = response.data;
                 return response;
@@ -42,7 +42,7 @@ export default class AccountCtrl {
 
     //obtention des virements effectué selon un id d'utilisateur
     loadVirementEffectue() {
-        return this.virementServiceName.loadVirementEffectue(this.id)
+        return this.virementService.loadVirementEffectue(this.id)
             .then((response) => {
                 this.virementsEffectue = response.data;
                 return response;

@@ -20,7 +20,7 @@ public class CompleteAccount {
     private String nameUserCompteVers;
     private double montant;
     private String motif;
-    //private Date date;
+    private String date;
 
 
 }

@@ -30,6 +30,7 @@
                     <td>Compte déficitaire</td>
                     <td>Montant(€)</td>
                     <td>Motif</td>
+                    <td>Date</td>
 
                 </tr>
                 <tr ng-repeat="virement in ctrl.virementsRecu track by $index">
@@ -38,6 +39,7 @@
                     <td>{{virement.nameUserCompteDepuis}} : {{virement.nomCompteDepuis}}</td>
                     <td>{{virement.montant}}</td>
                     <td>{{virement.motif}}</td>
+                    <td>{{virement.date}}</td>
                 </tr>
             </table>
         </div>
@@ -51,6 +53,7 @@
                     <td>Compte bénéficiaire</td>
                     <td>Montant(€)</td>
                     <td>Motif</td>
+                    <td>Date</td>
 
                 </tr>
                 <tr ng-repeat="virement in ctrl.virementsEffectue track by $index">
@@ -59,6 +62,7 @@
                     <td>{{virement.nameUserCompteVers}} : {{virement.nomCompteVers}}</td>
                     <td>{{virement.montant}}</td>
                     <td>{{virement.motif}}</td>
+                    <td>{{virement.date}}</td>
                 </tr>
             </table>
         </div>
