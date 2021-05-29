@@ -62,7 +62,7 @@ class UserController {
         return ResponseEntity.ok().body(user);
     }
 
-    //permet de remettre 30 secondes à la date d'expiration du token
+    //permet de réinitialiser la date d'expiration du token
     @GetMapping("/tokenRefresh")
     ResponseEntity<User> refreshTokenExpiration(HttpServletRequest request) {
 

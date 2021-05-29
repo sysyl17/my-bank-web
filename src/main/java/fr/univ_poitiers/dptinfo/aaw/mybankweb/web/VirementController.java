@@ -15,7 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/virement")
-public class VirementControler {
+public class VirementController {
 
     @Autowired
     private VirementRepository virementRepository;
@@ -93,6 +93,11 @@ public class VirementControler {
         return all;
     }
 
+    /**
+     * Formate une Date sous forme : jj/mm/aa hh:mm .
+     * @param date La date à formatter
+     * @return Une date formaté sous forme de String
+     */
     public String formatDate(Date date){
         DateFormat shortDateFormat = DateFormat.getDateTimeInstance(
                 DateFormat.SHORT,

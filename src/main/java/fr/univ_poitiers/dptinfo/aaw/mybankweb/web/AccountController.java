@@ -14,7 +14,7 @@ import java.util.Collection;
 
 @RestController
 @RequestMapping("/api/accounts")
-public class AccountControler {
+public class AccountController {
 
     private final Logger log = LoggerFactory.getLogger(UserController.class);
 

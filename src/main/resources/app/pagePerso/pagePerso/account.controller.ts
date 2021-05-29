@@ -64,6 +64,7 @@ export default class AccountCtrl {
         document.location.href = "/virement";
     }
 
+    //clean et recharge les comptes
     closeNewAccount() {
         this.name = undefined;
         this.balance = undefined;
