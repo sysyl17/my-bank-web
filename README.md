@@ -7,6 +7,7 @@
 
 ***
 ## Mise en place
+* lancez npm install dans un terminal
 * lancez le script start-dev, ou npm run start-dev depuis le terminal
 * lancez le main MyBankWebApplication
 * rendez-vous à l'adresse : <http://localhost:8080/>
