@@ -22,7 +22,7 @@
     <thead>
         <tr>
             <th>#</th>
-            <th align="center">Mail</th>
+            <th align="center">Email</th>
             <th align="right">Mot de passe</th>
         </tr>
     </thead>
@@ -45,7 +45,7 @@
     </tbody>
 </table>
 
-- Création de compte bancaire
+- Création d'un compte bancaire
 
 Vous pouvez créer vous compte bancaire sur la page principale quand vous êtes connecté.
 Il suffit de renseigner le nom du compte et le montant de départ.
